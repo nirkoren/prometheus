@@ -299,8 +299,7 @@ func newScrapePool(cfg *config.ScrapeConfig, app storage.Appendable, jitterSeed 
 		opts.target.SetMetadataStore(cache)
 
 		// Store the cache in the context.
-		loopCtx := ContextWithMetricMetadataStore(ctx, cache)
-		loopCtx = ContextWithTarget(loopCtx, opts.target)
+		loopCtx := ContextWithTarget(ctx, opts.target)
 
 		return newScrapeLoop(
 			loopCtx,
